@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6366f1">
+<title>FufuMate</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--main:#6366f1;--bg:#f5f7ff;--husband:#60a5fa;--wife:#f472b6;--shared:#34d399}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:sans-serif;background:var(--bg);padding-bottom:80px}header{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:20px}.header-card{margin-top:10px;background:rgba(255,255,255,.15);padding:15px;border-radius:16px}.container{padding:15px}.card{background:#fff;border-radius:18px;padding:15px;margin-bottom:15px;box-shadow:0 6px 15px rgba(0,0,0,.08)}input,select,textarea{width:100%;padding:10px;margin:6px 0;border:1px solid #ddd;border-radius:10px}button{background:var(--main);color:#fff;border:none;border-radius:10px;padding:10px}.full{width:100%}.page{display:none}.page.active{display:block}.bottom-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;border-top:1px solid #ddd}.bottom-nav button{flex:1;background:#fff;color:#333}.task{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:12px;margin:8px 0}.husband{background:#dbeafe}.wife{background:#fce7f3}.shared{background:#dcfce7}.done{opacity:.5;text-decoration:line-through}.reward{display:flex;justify-content:space-between;margin:8px 0;padding:10px;background:#f7f7f7;border-radius:10px}
+</style>
+</head>
+<body>
+<header><h1>🏠 FufuMate</h1><div class="header-card">👨 <span id="husbandPoints">0</span>pt<br>👩 <span id="wifePoints">0</span>pt<br><br>❤️ 支え合い指数 <span id="supportScore">0</span>%</div></header>
+<div class="container">
+<div id="homePage" class="page active"><div class="card"><h2>今日の家事</h2><div id="todayTasks"></div></div></div>
+<div id="taskPage" class="page"><div class="card"><h2>家事追加</h2><input id="taskTitle" placeholder="家事名"><select id="taskOwner"><option value="husband">夫</option><option value="wife">妻</option><option value="shared">共通</option></select><input id="taskPoint" type="number" value="10"><button class="full" onclick="addTask()">追加</button></div><div class="card"><div id="taskList"></div></div></div>
+<div id="shoppingPage" class="page"><div class="card"><h2>買い物</h2><input id="shoppingInput"><button class="full" onclick="addShopping()">追加</button><div id="shoppingList"></div></div></div>
+<div id="rewardPage" class="page"><div class="card"><h2>ご褒美</h2><div id="rewardList"></div></div><div class="card"><h2>感謝</h2><textarea id="thanksInput"></textarea><button class="full" onclick="sendThanks()">送信</button><div id="thanksList"></div></div></div>
+</div>
+<div class="bottom-nav"><button onclick="showPage('homePage')">🏠</button><button onclick="showPage('taskPage')">✅</button><button onclick="showPage('shoppingPage')">🛒</button><button onclick="showPage('rewardPage')">🎁</button></div>
+<script src="app.js"></script>
+</body></html>
