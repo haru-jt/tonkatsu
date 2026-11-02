@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>FufuMate</title>
+
+<meta name="theme-color" content="#6366f1">
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+:root{
+  --primary:#6366f1;
+  --secondary:#8b5cf6;
+  --success:#10b981;
+
+  --husband:#60a5fa;
+  --wife:#f472b6;
+  --shared:#34d399;
+
+  --card:#ffffffcc;
+
+  --shadow:
+  0 10px 30px rgba(0,0,0,.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:
+  "Segoe UI",
+  sans-serif;
+
+  background:
+  linear-gradient(
+  180deg,
+  #eef2ff,
+  #f8fafc);
+
+  min-height:100vh;
+
+  padding-bottom:100px;
+
+}
+
+.header{
+
+  padding:24px;
+
+  background:
+  linear-gradient(
+  135deg,
+  var(--primary),
+  var(--secondary));
+
+  color:white;
+
+  border-bottom-left-radius:28px;
+  border-bottom-right-radius:28px;
+
+  box-shadow:
+  0 10px 25px rgba(99,102,241,.3);
+
+}
+
+.logo{
+  font-size:30px;
+  font-weight:700;
+}
+
+.subtitle{
+  opacity:.9;
+  margin-top:5px;
+}
+
+.container{
+  padding:16px;
+}
+
+.card{
+
+  background:var(--card);
+
+  backdrop-filter:blur(20px);
+
+  border-radius:24px;
+
+  padding:18px;
+
+  margin-bottom:16px;
+
+  box-shadow:var(--shadow);
+}
+
+.stats-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:12px;
+}
+
+.stat-card{
+
+  border-radius:20px;
+
+  padding:16px;
+
+  color:white;
+
+  text-align:center;
+
+}
+
+.husband-card{
+  background:
+  linear-gradient(135deg,#60a5fa,#2563eb);
+}
+
+.wife-card{
+  background:
+  linear-gradient(135deg,#f472b6,#db2777);
+}
+
+.points{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.section-title{
+
+  font-size:20px;
+
+  font-weight:700;
+
+  margin-bottom:12px;
+}
+
+.progress{
+
+  height:18px;
+
+  border-radius:999px;
+
+  background:#e5e7eb;
+
+  overflow:hidden;
+}
+
+.progress-bar{
+
+  height:100%;
+
+  width:0;
+
+  background:
+  linear-gradient(
+  90deg,
+  #22c55e,
+  #10b981);
+
+  transition:.4s;
+}
+
+.score{
+
+  text-align:center;
+
+  font-size:32px;
+
+  margin-top:15px;
+
+  font-weight:700;
+
+  color:#10b981;
+}
+
+.task{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:14px;
+
+  border-radius:18px;
+
+  margin-bottom:10px;
+
+  background:white;
+
+  box-shadow:
+  0 3px 10px rgba(0,0,0,.05);
+}
+
+.husband{
+  border-left:6px solid #3b82f6;
+}
+
+.wife{
+  border-left:6px solid #ec4899;
+}
+
+.shared{
+  border-left:6px solid #10b981;
+}
+
+.task-info{
+  flex:1;
+}
+
+.task-title{
+  font-weight:600;
+}
+
+.task-point{
+  font-size:12px;
+  color:#666;
+}
+
+input,
+select,
+textarea{
+
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:rgb(0, 0, 0);
+
+  box-shadow:
+  inset 0 2px 5px rgba(0,0,0,.05);
+
+  margin-bottom:10px;
+}
+
+textarea{
+  resize:none;
+  min-height:80px;
+}
+
+button{
+
+  border:none;
+
+  cursor:pointer;
+
+  border-radius:16px;
+
+  padding:14px;
+
+  font-weight:700;
+
+  color:rgb(0, 0, 0);
+
+  transition:.2s;
+}
+
+button:active{
+  transform:translateY(2px);
+}
+
+.btn-primary{
+
+  width:100%;
+
+  background:
+  linear-gradient(
+  180deg,
+  #818cf8,
+  #6366f1);
+
+  box-shadow:
+  0 5px 15px rgba(99,102,241,.4);
+}
+
+.btn-success{
+
+  background:
+  linear-gradient(
+  180deg,
+  #34d399,
+  #10b981);
+}
+
+.btn-danger{
+
+  background:
+  linear-gradient(
+  180deg,
+  #fb7185,
+  #ef4444);
+}
+
+.reward{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:12px;
+
+  border-radius:18px;
+
+  background:#f9fafb;
+
+  margin-bottom:10px;
+}
+
+.thanks-item{
+
+  background:#000000;
+
+  border-radius:18px;
+
+  padding:12px;
+
+  margin-top:10px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.bottom-nav{
+
+  position:fixed;
+
+  bottom:10px;
+  left:10px;
+  right:10px;
+
+  display:flex;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  background:white;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.15);
+}
+
+.nav-btn{
+
+  flex:1;
+
+  background:white;
+
+  color:#555;
+
+  border-radius:0;
+
+  padding:16px;
+}
+
+.nav-btn.active{
+
+  background:#eef2ff;
+
+  color:var(--primary);
+}
+
+@media (prefers-color-scheme: dark){
+
+ body{
+   background:#111827;
+ }
+
+ .card{
+   background:#1f2937;
+   color:white;
+ }
+
+ input,
+ select,
+ textarea{
+   background:#374151;
+   color:white;
+ }
+
+ .task{
+   background:#2d3748;
+ }
+
+ .reward{
+   background:#374151;
+ }
+
+ .bottom-nav{
+   background:#1f2937;
+ }
+
+ .nav-btn{
+   background:#1f2937;
+   color:white;
+ }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+🏠 FufuMate
+</div>
+
+<div class="subtitle">
+夫婦で支え合う毎日を
+</div>
+
+</header>
+
+<div class="container">
+
+<!-- HOME -->
+
+<div id="homePage"
+class="page active">
+
+<div class="card">
+
+<div class="section-title">
+❤️ 支え合い指数
+</div>
+
+<div class="progress">
+<div
+id="progressBar"
+class="progress-bar">
+</div>
+</div>
+
+<div
+id="supportScore"
+class="score">
+0%
+</div>
+
+</div>
+
+<div class="stats-grid">
+
+<div
+class="stat-card husband-card">
+
+<div>👨 夫</div>
+
+<div
+id="husbandPoints"
+class="points">
+0
+</div>
+
+</div>
+
+<div
+class="stat-card wife-card">
+
+<div>👩 妻</div>
+
+<div
+id="wifePoints"
+class="points">
+0
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+
+📋 今日の家事
+
+</div>
+
+<div id="todayTasks">
+</div>
+
+<button
+class="btn-primary"
+onclick="refreshData()">
+
+🔄 最新状態へ更新
+
+</button>
+
+</div>
+
+</div>
+
+<!-- TASK -->
+
+<div
+id="taskPage"
+class="page">
+
+<div class="card">
+
+<div class="section-title">
+✅ 家事追加
+</div>
+
+<input
+id="taskTitle"
+placeholder="家事名">
+
+<select id="taskOwner">
+
+<option value="husband">
+👨 夫
+</option>
+
+<option value="wife">
+👩 妻
+</option>
+
+<option value="shared">
+👨‍👩‍👧‍👦 共通
+</option>
+
+</select>
+
+<input
+id="taskPoint"
+type="number"
+value="10">
+
+<button
+class="btn-primary"
+onclick="addTask()">
+
+追加
+
+</button>
+
+</div>
+
+<div class="card">
+
+<div
+id="taskList">
+</div>
+
+</div>
+
+</div>
+
+<!-- SHOP -->
+
+<div
+id="shoppingPage"
+class="page">
+
+<div class="card">
+
+<div class="section-title">
+🛒 買い物リスト
+</div>
+
+<input
+id="shoppingInput"
+placeholder="牛乳">
+
+<button
+class="btn-primary"
+onclick="addShopping()">
+
+追加
+
+</button>
+
+<div
+id="shoppingList">
+</div>
+
+</div>
+
+</div>
+
+<!-- REWARD -->
+
+<div
+id="rewardPage"
+class="page">
+
+<div class="card">
+
+<div class="section-title">
+🎁 ご褒美
+</div>
+
+<div id="rewardList">
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+❤️ 感謝メッセージ
+</div>
+
+<textarea
+id="thanksInput"
+placeholder="ありがとう😊">
+</textarea>
+
+<button
+class="btn-success"
+onclick="sendThanks()">
+
+送信
+
+</button>
+
+<div id="thanksList">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<nav class="bottom-nav">
+
+<button
+class="nav-btn"
+onclick="showPage('homePage')">
+🏠
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('taskPage')">
+✅
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('shoppingPage')">
+🛒
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('rewardPage')">
+🎁
+</button>
+
+</nav>
+
+<script src="app.js?v=2"></script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "id": "/",
+  "name": "FufuMate",
+  "short_name": "FufuMate",
+  "description": "夫婦で家事・買い物・感謝を共有する生活サポートアプリ",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#eef2ff",
+  "theme_color": "#6366f1",
+
+  "categories": [
+    "lifestyle",
+    "productivity",
+    "utilities"
+  ],
+
+  "icons": [
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ホーム画面"
+    },
+    {
+      "src": "screenshots/tasks.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "家事管理"
+    },
+    {
+      "src": "screenshots/shopping.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "買い物リスト"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "家事追加",
+      "short_name": "家事",
+      "url": "./?page=task",
+      "description": "家事を追加"
+    },
+    {
+      "name": "買い物追加",
+      "short_name": "買い物",
+      "url": "./?page=shopping",
+      "description": "買い物リストを追加"
+    },
+    {
+      "name": "感謝メッセージ",
+      "short_name": "感謝",
+      "url": "./?page=thanks",
+      "description": "感謝を送る"
+    }
+  ],
+
+  "prefer_related_applications": false
+}
